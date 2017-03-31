@@ -1,0 +1,51 @@
+List the components of Hadoop 2.x and explain them in detail.
+
+There are three components of hadoop 2.x. Namely-
+1.HDFS
+2.Mapreduce
+3.YARN
+Hadoop runs based on the three components
+1.HDFS: HDFS provides scalable, fault-tolerant storage at low cost.The HDFS software detects and compensates for hardware issues, including
+disk problems and server failure. HDFS stores files across the collection of servers in a cluster. Files are decomposed into blocks and each
+block is written to more than one of the servers. The replication provides both fault-tolerance and performance.
+Features of HDFS are-
+Very large files: Files that are megabytes, gigabytes, terabytes, or petabytes of size.
+Streaming data access: HDFS is built around the idea that data is written once butread many times. A dataset is copied from source and then 
+analysis is done on that dataset over time.
+Commodity hardware: Hadoop does not require expensive, highly reliable hardwareas it is designed to run on clusters of commodity hardware.
+HDFS is the primary distributed storage used by Hadoop applications.A HDFS cluster primarily consists of a NameNode that manages
+the file system metadata and DataNodes that store the actual data.
+Namenode-
+NameNode is the centerpiece of HDFS it is also known as the Master, it only stores the metadata of HDFS, the directory tree of all files in
+the file system, and tracks the files across the cluster. NameNode does not store the actual data or the dataset. The data itself is actually
+stored in the DataNodes. The list of the blocks and its location for any given file in HDFS is in namenode. With this information NameNode
+knows how to construct the file from blocks, when the NameNode is down, HDFS/Hadoop cluster is inaccessible and considered down.
+Datanode-
+DataNode is responsible for storing the actual data in HDFS, it is also known as the Slave. NameNode and DataNode are in constant communication.
+When a DataNode starts up it announce itself to the NameNode along with the list of blocks it is responsible for. When a DataNode is down,
+it does not affect the availability of data or the cluster. NameNode will arrange for replication for the blocks managed by the DataNode that
+is not available. DataNode is usually configured with a lot of hard disk space. Because the actual data is stored in the DataNode.
+
+2.Mapreduce: MapReduce is the heart of Hadoop. Hadoop MapReduce is a software framework for easily writing applications which process vast
+amounts of data in-parallel on large clusters of commodity hardware in a reliable, fault-tolerant manner.It is this programming paradigm that
+allows for massive scalability across hundreds or thousandsof servers in a Hadoop cluster.The term MapReduce actually refers to two separate
+and distinct tasks that Hadoop programs perform. The first isthe map job, which takes a set of data and converts it into another set of data,
+where individual elements are broken down into tuples. The reduce job takes the output from a map as input and combines thosedata tuples into a
+smaller set of tuples, the reduce job is always performed after the map job.
+Advantages of MapReduce programming are-
+1.Scalability
+2.Cost-effective solution
+3.Flexibility
+4.Fast
+5.Security and Authentication
+6.Parallel processing
+7.Availability and resilient nature
+8.Simple model of programming
+
+3.YARN: YARN stands for yet another resource negotiater.The fundamental idea of YARN is to split up the functionalities of resource management and
+job scheduling/monitoring into separate daemons.The ResourceManager and the NodeManager form the data-computation framework. The ResourceManager is
+the ultimate authority that arbitrates resources among all the applications in the system. The NodeManager is the per-machine framework agent who
+is responsible for containers, monitoring their resource usage and reporting the same to the Resource Manager.The ResourceManager has two main
+components: Scheduler and Applications Manager. YARN supports multiple processing models in addition to MapReduce. One of the most significant benefits
+of this is that we are no longer limited to working the often I/O intensive, high latency MapReduce framework. This advance means Hadoop users should
+be familiar with the pros and cons of the new processing models and understand when to apply them to particular use cases.
